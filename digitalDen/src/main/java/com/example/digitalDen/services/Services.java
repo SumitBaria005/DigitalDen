@@ -1,6 +1,6 @@
 package com.example.digitalDen.services;
 
-import com.example.digitalDen.products.Product;
+import com.example.digitalDen.entities.Product;
 
 import java.util.List;
 

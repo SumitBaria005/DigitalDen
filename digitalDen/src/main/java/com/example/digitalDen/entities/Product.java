@@ -1,4 +1,4 @@
-package com.example.digitalDen.products;
+package com.example.digitalDen.entities;
 
 public class Product {
     int productNo;
