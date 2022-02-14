@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-class ProductServiceImplementation implements ProductService {
+
+public class ProductServiceImplementation implements ProductService{
+
     @Override
     public List<Product> getProducts(int pageNo) {
         return null;
     }
+
 }
+
