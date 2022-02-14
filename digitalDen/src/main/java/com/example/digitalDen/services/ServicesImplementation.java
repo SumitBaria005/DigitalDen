@@ -1,6 +1,6 @@
 package com.example.digitalDen.services;
 
-import com.example.digitalDen.products.Product;
+import com.example.digitalDen.entities.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

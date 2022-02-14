@@ -1,10 +1,8 @@
-package com.example.digitalDen.controller;
+package com.example.digitalDen.api;
 
 import com.example.digitalDen.services.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.websocket.server.PathParam;
 
 
 @RestController
