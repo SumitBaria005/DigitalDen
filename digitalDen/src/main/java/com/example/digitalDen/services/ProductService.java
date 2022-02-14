@@ -5,6 +5,6 @@ import com.example.digitalDen.entities.Product;
 import java.util.List;
 
 
-public interface Services {
+public interface ProductService {
     List<Product> getProducts(int pageNo);
 }
