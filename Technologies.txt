@@ -1,0 +1,9 @@
+Front end:
+	REACT
+	HTML
+	CSS
+	Material UI
+
+Backend:
+	Spring
+	JPA
