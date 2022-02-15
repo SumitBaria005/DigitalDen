@@ -9,4 +9,6 @@ public interface CategoryService {
 
     public List<Category> getCategories(Integer pageNo, Integer pageSize);
 
+    public void  setCategories(Category category);
+
 }

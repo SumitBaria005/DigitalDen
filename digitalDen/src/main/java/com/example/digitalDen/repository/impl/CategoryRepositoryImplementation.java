@@ -1,6 +1,7 @@
 package com.example.digitalDen.repository.impl;
 
 import com.example.digitalDen.db.util.JDBCAccess;
+import com.example.digitalDen.db.util.JPAAccess;
 import com.example.digitalDen.entities.Category;
 import com.example.digitalDen.repository.CategoryRepository;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,6 +20,9 @@ public class CategoryRepositoryImplementation implements CategoryRepository {
     @Inject
     JDBCAccess jdbcAccess;
 
+    @Inject
+    JPAAccess jpaAccess;
+
     @Override
     public List<Category> getCategory(Integer pageNo, Integer pageSize) {
         List<Category> categoryList = jdbcAccess.find(GET_ALL_CATEGORIES, new RowMapper<Category>() {
@@ -32,5 +36,10 @@ public class CategoryRepositoryImplementation implements CategoryRepository {
             }
         });
         return categoryList;
+    }
+
+    @Override
+    public void setCategory(Category category) {
+        jpaAccess.save(category);
     }
 }

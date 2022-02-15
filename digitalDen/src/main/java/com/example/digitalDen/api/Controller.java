@@ -60,12 +60,18 @@ public class Controller {
         return this.productService.getProduct(product_id);
     }
 
+    //Category Related APIs
 
     @GetMapping("/category")
     public List<Category> getCategory(@RequestParam(value = "pageNo", required = false) Integer pageNo, @RequestParam(value = "pageSize", required = false) Integer pageSize){
         pageNo = null == pageNo ? 1 : pageNo;
         pageSize = null == pageSize ? 20 : pageSize;
         return categoryService.getCategories(pageNo, pageSize);
+    }
+
+    @PostMapping("/category")
+    public void setCategory(@RequestBody Category category){
+        categoryService.setCategories(category);
     }
 
     @PostMapping("/customer")
