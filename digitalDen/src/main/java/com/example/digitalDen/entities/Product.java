@@ -4,12 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name = "Product")
-@Table(name = "productData")
 public class Product {
     int productNo;
 
-    @Id
+
     public int getProductNo() {
         return productNo;
     }
