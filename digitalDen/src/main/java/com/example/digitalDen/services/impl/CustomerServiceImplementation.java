@@ -17,9 +17,11 @@ public class CustomerServiceImplementation implements CustomerService {
     @Inject
     Environment env;
 
-    final String GET_CUSTOMER="SELECT * FROM sql6472203.customer";
-    final String GET_CUSTOMERID="SELECT * FROM sql6472203.customer WHERE customer_id=?";
-    final String CHECK_CUSTOMER_LOGIN="SELECT * FROM sql6472203.customer WHERE email=? and password=?";
+    final String GET_CUSTOMER="SELECT * FROM customer";
+    final String GET_CUSTOMERID="SELECT * FROM customer WHERE customer_id=?";
+    final String CHECK_CUSTOMER_LOGIN="SELECT * FROM customer WHERE email=? and password=?";
+    final String INSERT_SQL = "INSERT INTO `digitalden`.`customer` (`customer_name`, `email`, `contact`, `address`, `dob`, `password`) VALUES (?,?,?,?,?,?)";
+    final String UPDATE_SQL="UPDATE `digitalden`.`customer` SET `customer_name` = ?, `email` = ?, `contact` = ?, `address` = ?, `dob` = ?, `password` = ? WHERE (`customer_id` = ?);";
 
     @Override
     public List<Customer> getCustomers() throws SQLException {
@@ -63,10 +65,55 @@ public class CustomerServiceImplementation implements CustomerService {
             customer.setPassword(rs.getString("password"));
             if(customer.getEmail().equals(email) && customer.getPassword().equals(password))
             {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Login Successfully");
+                return ResponseEntity.status(HttpStatus.OK).body("Login Successfully");
             }
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Login Failed !!! Retry");
+    }
+
+
+    @Override
+    public ResponseEntity<String> setCustomer(Customer customer) throws SQLException {
+        Connection con = DriverManager.getConnection((String)env.getProperty("spring.datasource.url"),(String)env.getProperty("spring.datasource.username"),(String)env.getProperty("spring.datasource.password"));
+        PreparedStatement statement = con.prepareStatement(INSERT_SQL);
+        try
+        {
+            statement.setString(1, customer.getCustomer_name());
+            statement.setString(2, customer.getEmail());
+            statement.setString(3, customer.getContact());
+            statement.setString(4, customer.getAddress());
+            statement.setString(5, customer.getDob());
+            statement.setString(6, customer.getPassword());
+            statement.execute();
+            return ResponseEntity.status(HttpStatus.OK).body("Inserted Successfully");
+        }
+        catch (Exception e)
+        {
+
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Inserted Successfully");
+    }
+
+    @Override
+    public ResponseEntity<String> updateCustomer(Customer customer) throws SQLException {
+        Connection con = DriverManager.getConnection((String)env.getProperty("spring.datasource.url"),(String)env.getProperty("spring.datasource.username"),(String)env.getProperty("spring.datasource.password"));
+        PreparedStatement statement = con.prepareStatement(UPDATE_SQL);
+        try {
+            statement.setString(1, customer.getCustomer_name());
+            statement.setString(2, customer.getEmail());
+            statement.setString(3, customer.getContact());
+            statement.setString(4, customer.getAddress());
+            statement.setString(5, customer.getDob());
+            statement.setString(6, customer.getPassword());
+            statement.setInt(7, customer.getCustomer_id());
+            statement.execute();
+            return ResponseEntity.status(HttpStatus.OK).body("Updated Successfully");
+        }
+        catch (Exception e)
+        {
+
+        }
+       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Updated Successfully");
     }
 
     Customer getCustomerData(Customer customer,ResultSet rs) throws SQLException {
