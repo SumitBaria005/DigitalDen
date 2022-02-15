@@ -2,6 +2,7 @@ package com.example.digitalDen.config;
 
 
 import com.example.digitalDen.db.util.JDBCAccess;
+import com.example.digitalDen.db.util.JPAAccess;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,5 +43,8 @@ public class DatabaseConfiguration {
         jdbcAccess.setDataSource(writeDataSource());
         return jdbcAccess;
     }
+
+    @Bean
+    public JPAAccess jpaAccess(){return new JPAAccess();}
 
 }
