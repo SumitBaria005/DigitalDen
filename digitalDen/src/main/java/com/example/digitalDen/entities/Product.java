@@ -1,5 +1,9 @@
 package com.example.digitalDen.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 public class Product {
     int product_id;
     String product_name;
@@ -22,6 +26,7 @@ public class Product {
 
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
+
     }
 
     public String getProduct_description() {
