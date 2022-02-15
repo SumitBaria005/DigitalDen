@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ProductService {
     List<Product> getProducts() throws SQLException;
+
+    Product getProduct(Integer product_id) throws SQLException;
 }
