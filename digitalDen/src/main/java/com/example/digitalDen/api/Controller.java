@@ -28,8 +28,12 @@ import java.util.List;
 public class Controller {
     @Autowired
     private ProductService productService;
+
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CategoryService categoryService;
 
 
     @GetMapping("/products")
@@ -55,10 +59,7 @@ public class Controller {
     public Product getProduct(@PathVariable Integer product_id) throws SQLException {
         return this.productService.getProduct(product_id);
     }
-    private ProductService productServices;
 
-    @Autowired
-    private CategoryService categoryService;
 
     @GetMapping("/category")
     public List<Category> getCategory(@RequestParam(value = "pageNo", required = false) Integer pageNo, @RequestParam(value = "pageSize", required = false) Integer pageSize){

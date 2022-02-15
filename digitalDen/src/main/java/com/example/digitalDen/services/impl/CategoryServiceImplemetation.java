@@ -16,6 +16,6 @@ public class CategoryServiceImplemetation implements CategoryService {
 
     @Override
     public List<Category> getCategories(Integer pageNo, Integer pageSize) {
-        return null;
+        return categoryRepository.getCategory(pageNo, pageSize);
     }
 }
