@@ -1,0 +1,4 @@
+Azure Databse Credentials
+
+username: SumitBaria@digital-den
+Password: Dontask123?!
