@@ -1,9 +1,12 @@
 package com.example.digitalDen.services.impl;
 
+import com.example.digitalDen.db.util.JDBCAccess;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -17,44 +20,46 @@ public class ProductServiceImplementation implements ProductService{
     @Inject
     Environment env;
 
+    @Inject
+    @Qualifier("jdbcAccess")
+    JDBCAccess jdbcAccess;
+
     final String GET_PRODUCT="SELECT * FROM products";
+    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.products where product_id=?";
 
     @Override
     public List<Product> getProducts() throws SQLException {
-        List<Product> productList=new LinkedList<>();
-        Connection con= DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
-        Statement st=con.createStatement();
-        ResultSet rs=st.executeQuery(GET_PRODUCT);
-        while(rs.next()){
-            Product product=new Product();
-            product.setProduct_id(rs.getInt(1));
-            product.setProduct_name(rs.getString(2));
-            product.setProduct_description(rs.getString(3));
-            product.setPrice(rs.getDouble(4));
-            product.setCategory(rs.getString(5));
-            product.setCompany_name(rs.getString(6));
-            productList.add(product);
-        }
+        List<Product> productList=jdbcAccess.find(GET_PRODUCT, new RowMapper<Product>() {
+            @Override
+            public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Product product=new Product();
+                product.setProduct_id(rs.getInt("product_id"));
+                product.setProduct_name(rs.getString("product_name"));
+                product.setProduct_description(rs.getString("product_description"));
+                product.setPrice(rs.getDouble("price"));
+                product.setCategory(rs.getString("category"));
+                product.setCompany_name(rs.getString("company_name"));
+                return product;
+            }
+        });
         return productList;
     }
 
     @Override
     public Product getProduct(Integer product_id) throws SQLException {
-        Connection con= DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
-        Statement st=con.createStatement();
-        ResultSet rs=st.executeQuery(GET_PRODUCT);
-        if(!rs.next())return null;
-        while(rs.getInt(1)!=product_id){
-            if(!rs.next())return null;
-        }
-        Product product=new Product();
-        product.setProduct_id(rs.getInt(1));
-        product.setProduct_name(rs.getString(2));
-        product.setProduct_description(rs.getString(3));
-        product.setPrice(rs.getDouble(4));
-        product.setCategory(rs.getString(5));
-        product.setCompany_name(rs.getString(6));
-        return product;
+        return jdbcAccess.findOne(GET_PRODUCT_BY_ID, new RowMapper<Product>() {
+            @Override
+            public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Product product=new Product();
+                product.setProduct_id(rs.getInt("product_id"));
+                product.setProduct_name(rs.getString("product_name"));
+                product.setProduct_description(rs.getString("product_description"));
+                product.setPrice(rs.getDouble("price"));
+                product.setCategory(rs.getString("category"));
+                product.setCompany_name(rs.getString("company_name"));
+                return product;
+            }
+        },product_id);
     }
 
 }
