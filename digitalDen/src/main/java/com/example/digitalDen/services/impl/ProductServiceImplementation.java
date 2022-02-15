@@ -19,7 +19,7 @@ public class ProductServiceImplementation implements ProductService{
     @Inject
     Environment env;
 
-    final String GET_PRODUCT="SELECT * FROM sql6472203.products";
+    final String GET_PRODUCT="SELECT * FROM products";
 
     @Override
     public List<Product> getProducts() throws SQLException {
