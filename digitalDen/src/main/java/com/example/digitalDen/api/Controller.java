@@ -67,4 +67,14 @@ public class Controller {
         pageSize = null == pageSize ? 20 : pageSize;
         return categoryService.getCategories(pageNo, pageSize);
     }
+
+    @PostMapping("/customer")
+    public ResponseEntity<String>  setCustomer(@RequestBody Customer customer) throws SQLException {
+        return this.customerService.setCustomer(customer);
+    }
+
+    @PutMapping("/customer")
+    public ResponseEntity<String>  updateCustomer(@RequestBody Customer customer) throws SQLException {
+        return this.customerService.updateCustomer(customer);
+    }
 }
