@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface CategoryService {
 
-    public List<Category> getCategory();
+    public List<Category> getCategories(Integer pageNo, Integer pageSize);
 
 }
