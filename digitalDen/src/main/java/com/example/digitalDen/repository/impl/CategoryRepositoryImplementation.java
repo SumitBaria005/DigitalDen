@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public class CategoryRepositoryImplementation implements CategoryRepository {
 
-    public static final String GET_ALL_CATEGORIES = "SELECT * FROM digitalden.category_data;";
+    public static final String GET_ALL_CATEGORIES = "SELECT * FROM digitalden.category_data";
 
     @Inject
     JDBCAccess jdbcAccess;

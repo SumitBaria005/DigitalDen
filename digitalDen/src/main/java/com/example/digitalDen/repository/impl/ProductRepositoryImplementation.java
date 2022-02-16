@@ -1,6 +1,8 @@
 package com.example.digitalDen.repository.impl;
 
 import com.example.digitalDen.db.util.JDBCAccess;
+import com.example.digitalDen.db.util.JPAAccess;
+import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,8 +21,10 @@ public class ProductRepositoryImplementation implements ProductRepository {
     Environment env;
 
     @Inject
-    @Qualifier("jdbcAccess")
     JDBCAccess jdbcAccess;
+
+    @Inject
+    JPAAccess jpaAccess;
 
     final String GET_PRODUCT="SELECT * FROM products";
     final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.products where product_id=?";
@@ -58,5 +62,10 @@ public class ProductRepositoryImplementation implements ProductRepository {
                 return product;
             }
         },product_id);
+    }
+
+    @Override
+    public void setProduct(Mobiles mobile) {
+        jpaAccess.save(mobile);
     }
 }

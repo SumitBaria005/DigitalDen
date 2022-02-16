@@ -1,5 +1,6 @@
 package com.example.digitalDen.api;
 
+import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.services.CustomerService;
@@ -41,6 +42,10 @@ public class Controller {
         return this.productService.getProducts();
     }
 
+    @PostMapping("/products")
+    public void setProduct(@RequestBody Mobiles mobile){
+        this.productService.setProduct(mobile);
+    }
     @GetMapping("/customers")
     public List<Customer> getCustomers() throws SQLException {
         return this.customerService.getCustomers();
