@@ -60,19 +60,6 @@ public class Controller {
         return this.productService.getProduct(product_id);
     }
 
-    //Category Related APIs
-
-    @GetMapping("/category")
-    public List<Category> getCategory(@RequestParam(value = "pageNo", required = false) Integer pageNo, @RequestParam(value = "pageSize", required = false) Integer pageSize){
-        pageNo = null == pageNo ? 1 : pageNo;
-        pageSize = null == pageSize ? 20 : pageSize;
-        return categoryService.getCategories(pageNo, pageSize);
-    }
-
-    @PostMapping("/category")
-    public void setCategory(@RequestBody Category category){
-        categoryService.setCategories(category);
-    }
 
     @PostMapping("/customer")
     public ResponseEntity<String>  setCustomer(@RequestBody Customer customer) throws SQLException {
@@ -83,4 +70,34 @@ public class Controller {
     public ResponseEntity<String>  updateCustomer(@RequestBody Customer customer) throws SQLException {
         return this.customerService.updateCustomer(customer);
     }
+
+    //Category Related APIs
+
+    @GetMapping("/category")
+    public List<Category> getCategory(@RequestParam(value = "pageNo", required = false) Integer pageNo, @RequestParam(value = "pageSize", required = false) Integer pageSize){
+        pageNo = null == pageNo ? 1 : pageNo;
+        pageSize = null == pageSize ? 20 : pageSize;
+        return categoryService.getCategories(pageNo, pageSize);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    public Category getCategory(@PathVariable Integer categoryId){
+        return categoryService.getCategory(categoryId);
+    }
+
+    @PostMapping("/category")
+    public void setCategory(@RequestBody Category category){
+        categoryService.setCategories(category);
+    }
+
+    @PutMapping("/category")
+    public void updateCategory(@RequestBody Category category){
+        categoryService.updateCategory(category);
+    }
+
+    @DeleteMapping("/category/{categoryId}")
+    public ResponseEntity<String> deleteCategory(@PathVariable Integer categoryId){
+        return categoryService.deleteCategory(categoryId);
+    }
+
 }
