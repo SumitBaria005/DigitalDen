@@ -23,8 +23,7 @@ public class JPAAccess {
     public void update(Object entity){entityManager.merge(entity);}
 
     public void delete(Object entity){
-        entityManager.merge(entity);
-        entityManager.remove(entity);
+        entityManager.remove(entityManager.contains(entity) ? entity :  entityManager.merge(entity));
     }
 
     public <T> List<T> find(CriteriaQuery<T> query){return entityManager.createQuery(query).getResultList();}
