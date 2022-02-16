@@ -93,14 +93,14 @@ public class CustomerRepositoryImplementation implements CustomerRepository {
             {
                 try
                 {
-                    Customer customer=new Customer();
-                    statement.setString(1, customer.getCustomer_name());
-                    statement.setString(2, customer.getEmail());
-                    statement.setString(3, customer.getContact());
-                    statement.setString(4, customer.getAddress());
-                    statement.setString(5, customer.getDob());
-                    statement.setString(6, customer.getPassword());
-                    statement.execute();
+//                    Customer customer=new Customer();
+//                    statement.setString(1, customer.getCustomer_name());
+//                    statement.setString(2, customer.getEmail());
+//                    statement.setString(3, customer.getContact());
+//                    statement.setString(4, customer.getAddress());
+//                    statement.setString(5, customer.getDob());
+//                    statement.setString(6, customer.getPassword());
+//                    statement.execute();
                     return ResponseEntity.status(HttpStatus.OK).body("Inserted Successfully");
                 }
                 catch (Exception e)

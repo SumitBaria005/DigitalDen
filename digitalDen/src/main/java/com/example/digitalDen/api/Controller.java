@@ -3,8 +3,8 @@ package com.example.digitalDen.api;
 import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.entities.Product;
-import com.example.digitalDen.services.CustomerService;
-import com.example.digitalDen.services.ProductService;
+import com.example.digitalDen.entities.complaints.Complaints;
+import com.example.digitalDen.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
 import com.example.digitalDen.entities.Category;
-import com.example.digitalDen.services.CategoryService;
 import com.example.digitalDen.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +34,9 @@ public class Controller {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ComplaintService complaintService;
 
 
     @GetMapping("/products")
@@ -87,5 +89,10 @@ public class Controller {
     @PutMapping("/customer")
     public ResponseEntity<String>  updateCustomer(@RequestBody Customer customer) throws SQLException {
         return this.customerService.updateCustomer(customer);
+    }
+
+    @PostMapping("/complaint")
+    public ResponseEntity<String> addComplaint(@RequestBody Complaints complaint){
+        return this.complaintService.addComplaint(complaint);
     }
 }
