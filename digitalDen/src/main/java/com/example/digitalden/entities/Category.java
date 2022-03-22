@@ -1,4 +1,4 @@
-package com.example.digitalDen.entities;
+package com.example.digitalden.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,8 +1,4 @@
-package com.example.digitalDen.entities;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.example.digitalden.entities;
 
 public class Product {
     int product_id;

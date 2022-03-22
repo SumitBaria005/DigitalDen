@@ -1,8 +1,8 @@
-package com.example.digitalDen.config;
+package com.example.digitalden.config;
 
 
-import com.example.digitalDen.db.util.JDBCAccess;
-import com.example.digitalDen.db.util.JPAAccess;
+import com.example.digitalden.db.util.JDBCAccess;
+import com.example.digitalden.db.util.JPAAccess;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

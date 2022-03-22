@@ -1,6 +1,4 @@
-package com.example.digitalDen.entities;
-
-import java.util.Date;
+package com.example.digitalden.entities;
 
 public class Customer {
     int customer_id;
