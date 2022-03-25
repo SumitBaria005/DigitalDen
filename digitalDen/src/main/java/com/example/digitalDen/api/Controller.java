@@ -1,5 +1,6 @@
 package com.example.digitalDen.api;
 
+import com.example.digitalDen.entities.*;
 import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.entities.Product;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
-import com.example.digitalDen.entities.Category;
+
 import com.example.digitalDen.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,8 @@ public class Controller {
     @Autowired
     private ComplaintService complaintService;
 
+    @Autowired
+    private CartService cartService;
 
     @GetMapping("/products")
     public List<Product> getProducts() throws SQLException {
@@ -111,6 +114,18 @@ public class Controller {
     @PostMapping("/complaint")
     public ResponseEntity<String> addComplaint(@RequestBody Complaints complaint){
         return this.complaintService.addComplaint(complaint);
+    }
+
+    //Cart Related APIs
+
+    @PostMapping("/cart/{customerId}")
+    public Cart addCart(@RequestBody CartToProductMapping cart,@PathVariable int customerId){
+        return this.cartService.addCart(cart,customerId);
+    }
+
+    @GetMapping("/cart/{customerId}")
+    public Cart getCart(@PathVariable Integer customerId){
+        return this.cartService.getCart(customerId);
     }
 
 }

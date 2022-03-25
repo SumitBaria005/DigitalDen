@@ -35,12 +35,12 @@ public class ProductRepositoryImplementation implements ProductRepository {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Product product=new Product();
-                product.setProduct_id(rs.getInt("product_id"));
-                product.setProduct_name(rs.getString("product_name"));
-                product.setProduct_description(rs.getString("product_description"));
+                product.setId(rs.getInt("id"));
+                product.setProductName(rs.getString("product_name"));
+                product.setProductDescription(rs.getString("product_description"));
                 product.setPrice(rs.getDouble("price"));
                 product.setCategory(rs.getString("category"));
-                product.setCompany_name(rs.getString("company_name"));
+                product.setCompanyName(rs.getString("company_name"));
                 return product;
             }
         });
@@ -53,12 +53,12 @@ public class ProductRepositoryImplementation implements ProductRepository {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Product product=new Product();
-                product.setProduct_id(rs.getInt("product_id"));
-                product.setProduct_name(rs.getString("product_name"));
-                product.setProduct_description(rs.getString("product_description"));
+                product.setId(rs.getInt("product_id"));
+                product.setProductName(rs.getString("product_name"));
+                product.setProductDescription(rs.getString("product_description"));
                 product.setPrice(rs.getDouble("price"));
                 product.setCategory(rs.getString("category"));
-                product.setCompany_name(rs.getString("company_name"));
+                product.setCompanyName(rs.getString("company_name"));
                 return product;
             }
         },product_id);
