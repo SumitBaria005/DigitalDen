@@ -1,4 +1,4 @@
-package com.example.digitalden.entities.Categories;
+package com.example.digitalDen.entities.Categories;
 
 import javax.persistence.*;
 

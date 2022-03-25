@@ -1,8 +1,7 @@
-package com.example.digitalden.repository;
+package com.example.digitalDen.repository;
 
-import com.example.digitalden.api.request.RatingReviewRequest;
-import com.example.digitalden.api.response.RatingReviewResponse;
-import com.example.digitalden.entities.RatingReview;
+import com.example.digitalDen.api.response.RatingReviewResponse;
+import com.example.digitalDen.entities.RatingReview;
 
 import java.util.List;
 

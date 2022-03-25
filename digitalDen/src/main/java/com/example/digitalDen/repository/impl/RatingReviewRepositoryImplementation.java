@@ -1,17 +1,13 @@
-package com.example.digitalden.repository.impl;
+package com.example.digitalDen.repository.impl;
 
-import com.example.digitalden.api.response.RatingReviewResponse;
-import com.example.digitalden.db.util.JDBCAccess;
-import com.example.digitalden.db.util.JPAAccess;
-import com.example.digitalden.entities.RatingReview;
-import com.example.digitalden.repository.RatingReviewRepository;
+import com.example.digitalDen.api.response.RatingReviewResponse;
+import com.example.digitalDen.db.util.JDBCAccess;
+import com.example.digitalDen.db.util.JPAAccess;
+import com.example.digitalDen.entities.RatingReview;
+import com.example.digitalDen.repository.RatingReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 
 @Repository

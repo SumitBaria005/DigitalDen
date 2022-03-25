@@ -1,12 +1,12 @@
-package com.example.digitalden.api;
+package com.example.digitalDen.api;
 
-import com.example.digitalden.api.request.RatingReviewRequest;
-import com.example.digitalden.api.response.RatingReviewResponse;
-import com.example.digitalden.entities.Categories.Mobiles;
-import com.example.digitalden.entities.Customer;
-import com.example.digitalden.entities.Product;
-import com.example.digitalden.entities.complaints.Complaints;
-import com.example.digitalden.services.*;
+import com.example.digitalDen.api.request.RatingReviewRequest;
+import com.example.digitalDen.api.response.RatingReviewResponse;
+import com.example.digitalDen.entities.Categories.Mobiles;
+import com.example.digitalDen.entities.Customer;
+import com.example.digitalDen.entities.Product;
+import com.example.digitalDen.entities.complaints.Complaints;
+import com.example.digitalDen.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
-import com.example.digitalden.entities.Category;
-import com.example.digitalden.services.ProductService;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import com.example.digitalDen.entities.Category;
+import com.example.digitalDen.services.ProductService;
 
 import java.util.List;
 
@@ -47,8 +46,8 @@ public class Controller {
     }
 
     @PostMapping("/products")
-    public void setProduct(@RequestBody Product product){
-        this.productService.setProduct(product);
+    public void setProduct(@RequestBody Mobiles mobile){
+        this.productService.setProduct(mobile);
     }
 
     @GetMapping("/products/{product_id}")

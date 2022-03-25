@@ -1,4 +1,4 @@
-package com.example.digitalden.entities.complaints;
+package com.example.digitalDen.entities.complaints;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

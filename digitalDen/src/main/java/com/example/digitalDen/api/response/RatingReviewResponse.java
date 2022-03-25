@@ -1,4 +1,4 @@
-package com.example.digitalden.api.response;
+package com.example.digitalDen.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

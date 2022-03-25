@@ -1,10 +1,10 @@
-package com.example.digitalden.services.impl;
+package com.example.digitalDen.services.impl;
 
-import com.example.digitalden.api.request.RatingReviewRequest;
-import com.example.digitalden.api.response.RatingReviewResponse;
-import com.example.digitalden.entities.RatingReview;
-import com.example.digitalden.repository.RatingReviewRepository;
-import com.example.digitalden.services.RatingReviewService;
+import com.example.digitalDen.api.request.RatingReviewRequest;
+import com.example.digitalDen.api.response.RatingReviewResponse;
+import com.example.digitalDen.entities.RatingReview;
+import com.example.digitalDen.repository.RatingReviewRepository;
+import com.example.digitalDen.services.RatingReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
