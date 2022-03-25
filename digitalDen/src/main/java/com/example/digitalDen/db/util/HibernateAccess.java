@@ -17,6 +17,10 @@ public class HibernateAccess {
             sessionFactory.openSession();
             return (T) currentSession().get(entityClass,id);
         }
+        catch (Exception e){
+            System.out.println("Exception in HibernateConfiguration");
+            return (T) e.getCause();
+        }
         finally {
             System.out.println("Session Running");
             sessionFactory.close();
