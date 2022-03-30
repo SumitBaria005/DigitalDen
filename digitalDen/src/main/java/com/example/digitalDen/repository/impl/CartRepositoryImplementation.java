@@ -40,8 +40,8 @@ public class CartRepositoryImplementation implements CartRepository {
 
 
     private String CART_DETAILS="SELECT * FROM digitalden.cart WHERE customer_id=?";
-    private String SUM_OF_QUANTITY="SELECT SUM(quantity) as quantity FROM digitalden.cart_to_product_mapping where cart_id=?";
-    private String SUM_OF_PRICE="SELECT * FROM digitalden.cart_to_product_mapping where cart_id=?";
+    private String SUM_OF_QUANTITY="SELECT SUM(quantity) as quantity FROM digitalden.carttoproductmapping where cart_id=?";
+    private String SUM_OF_PRICE="SELECT * FROM digitalden.carttoproductmapping where cart_id=?";
     private String PRODUCT_DATA="SELECT * FROM digitalden.product WHERE id=?";
 
   //  private String INSERT_DATA="INSERT INTO digitalden.cart_to_product_mapping(cart_id,quantity,product_id) VALUES(?,?,?)";
@@ -72,6 +72,7 @@ public class CartRepositoryImplementation implements CartRepository {
         cart.setQuantity(totalQuantity);
         cart.setId(cartId);
         cart.setTotalPrice(totalPrice);
+        totalPrice=0.0;
         cart.setCustomerId(customerId);
         cart.setUpdatedDate("20-03-2022");
         cart.setCreatedDate("19-03-2022");
