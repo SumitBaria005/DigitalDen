@@ -5,6 +5,9 @@ import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.entities.complaints.Complaints;
+import com.example.digitalDen.entities.dealer.Dealer;
+import com.example.digitalDen.entities.dealer.DealerAccountDetails;
+import com.example.digitalDen.entities.dealer.ShopDetails;
 import com.example.digitalDen.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +44,9 @@ public class Controller {
 
     @Autowired
     private CartService cartService;
+
+    @Autowired
+    private DealerService dealerService;
 
     @GetMapping("/products")
     public List<Product> getProducts() throws SQLException {
@@ -126,6 +132,21 @@ public class Controller {
     @GetMapping("/cart/{customerId}")
     public Cart getCart(@PathVariable Integer customerId){
         return this.cartService.getCart(customerId);
+    }
+
+    @PostMapping("/dealer")
+    public ResponseEntity<String>  addDealer(@RequestBody Dealer dealer){
+        return this.dealerService.addDealer(dealer);
+    }
+
+    @PostMapping("/dealer/account")
+    public DealerAccountDetails addDealerAccount(@RequestBody DealerAccountDetails dealerAccountDetails){
+        return this.dealerService.addDealerAccount(dealerAccountDetails);
+    }
+
+    @PostMapping("/dealer/shop")
+    public ShopDetails addDealerShop(@RequestBody ShopDetails shopDetails){
+        return this.dealerService.addDealerShop(shopDetails);
     }
 
 }
