@@ -1,5 +1,7 @@
 package com.example.digitalDen.api;
 
+import com.example.digitalDen.DTO.response.DealerData;
+import com.example.digitalDen.DTO.response.DealerShops;
 import com.example.digitalDen.entities.*;
 import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Customer;
@@ -139,6 +141,11 @@ public class Controller {
         return this.dealerService.addDealer(dealer);
     }
 
+    @GetMapping("/dealer/{dealerId}")
+    public DealerData getDealer(@PathVariable Integer dealerId){
+        return this.dealerService.getDealer(dealerId);
+    }
+
     @PostMapping("/dealer/account")
     public DealerAccountDetails addDealerAccount(@RequestBody DealerAccountDetails dealerAccountDetails){
         return this.dealerService.addDealerAccount(dealerAccountDetails);
@@ -147,6 +154,11 @@ public class Controller {
     @PostMapping("/dealer/shop")
     public ShopDetails addDealerShop(@RequestBody ShopDetails shopDetails){
         return this.dealerService.addDealerShop(shopDetails);
+    }
+
+    @GetMapping("/dealer/shop/{dealerId}")
+    public List<DealerShops> getDealerShops(@PathVariable Integer dealerId){
+        return this.dealerService.getDealerShops(dealerId);
     }
 
 }

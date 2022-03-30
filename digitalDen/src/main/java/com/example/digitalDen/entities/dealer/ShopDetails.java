@@ -13,7 +13,7 @@ public class ShopDetails {
     private String email;
 
     @Column(name = "shop_contact")
-    private int shopContact;
+    private String shopContact;
 
     @Column(name = "address")
     private String address;
@@ -25,7 +25,7 @@ public class ShopDetails {
     private String state;
 
     @Column(name = "pin_code")
-    private int pinCode;
+    private String pinCode;
 
     @ManyToOne
     @JoinColumn(name = "dealer_id")
@@ -53,11 +53,11 @@ public class ShopDetails {
         this.email = email;
     }
 
-    public int getShopContact() {
+    public String getShopContact() {
         return shopContact;
     }
 
-    public void setShopContact(int shopContact) {
+    public void setShopContact(String shopContact) {
         this.shopContact = shopContact;
     }
 
@@ -85,11 +85,11 @@ public class ShopDetails {
         this.state = state;
     }
 
-    public int getPinCode() {
+    public String getPinCode() {
         return pinCode;
     }
 
-    public void setPinCode(int pinCode) {
+    public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
     }
 

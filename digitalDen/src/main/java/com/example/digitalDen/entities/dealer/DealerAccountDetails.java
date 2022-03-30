@@ -13,7 +13,7 @@ public class DealerAccountDetails {
     private String bankName;
 
     @Column(name = "account_no")
-    private int accountNo;
+    private String accountNo;
 
     @Column(name = "ifsc_code")
     private String IFSCcode;
@@ -44,11 +44,11 @@ public class DealerAccountDetails {
         this.bankName = bankName;
     }
 
-    public int getAccountNo() {
+    public String getAccountNo() {
         return accountNo;
     }
 
-    public void setAccountNo(int accountNo) {
+    public void setAccountNo(String accountNo) {
         this.accountNo = accountNo;
     }
 
