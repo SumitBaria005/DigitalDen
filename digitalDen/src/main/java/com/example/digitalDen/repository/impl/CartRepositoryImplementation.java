@@ -42,6 +42,8 @@ public class CartRepositoryImplementation implements CartRepository {
     private String CART_DETAILS="SELECT * FROM digitalden.cart WHERE customer_id=?";
     private String SUM_OF_QUANTITY="SELECT SUM(quantity) as quantity FROM digitalden.cart_to_product_mapping where cart_id=?";
     private String SUM_OF_PRICE="SELECT * FROM digitalden.cart_to_product_mapping where cart_id=?";
+    private String PRODUCT_DATA="SELECT * FROM digitalden.product WHERE id=?";
+
   //  private String INSERT_DATA="INSERT INTO digitalden.cart_to_product_mapping(cart_id,quantity,product_id) VALUES(?,?,?)";
     @Override
     public Cart addCart(CartToProductMapping cartMapping, int customerId) {
@@ -78,8 +80,14 @@ public class CartRepositoryImplementation implements CartRepository {
     }
 
     private Product getProduct(int id){
-        HibernateAccess hibernateAccess=new HibernateAccess();
-        return hibernateAccess.get(Product.class,id);
+        return jdbcAccess.findOne(PRODUCT_DATA, new RowMapper<Product>() {
+            @Override
+            public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+               Product product=new Product();
+               product.setPrice(rs.getDouble("price"));
+               return product;
+            }
+        },id);
     }
 
     @Override
