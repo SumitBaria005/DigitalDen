@@ -1,44 +1,58 @@
 package com.example.digitalDen.entities;
 
+import javax.persistence.*;
+
+@Entity(name = "Customer")
+@Table(name = "customer", schema = "digitalden")
 public class Customer {
-    int customer_id;
-    String customer_name;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    Integer Id;
+
+    @Column(name = "customer_name")
+    String customerName;
+
+    @Column(name = "email")
     String email;
+
+    @Column(name = "contact")
     String contact;
+
+    @Column(name = "address")
     String address;
+
+    @Column(name = "dob")
     String dob;
+
+    @Column(name = "password")
     String password;
 
-    public Customer(String email, String password) {
-    }
-
-    public Customer() {
-
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+    public Customer(Integer id, String customerName, String email, String contact, String address, String dob, String password) {
+        Id = id;
+        this.customerName = customerName;
+        this.email = email;
+        this.contact = contact;
+        this.address = address;
+        this.dob = dob;
         this.password = password;
     }
 
-
-    public int getCustomer_id() {
-        return customer_id;
+    public Integer getId() {
+        return Id;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setId(Integer id) {
+        Id = id;
     }
 
-    public String getCustomer_name() {
-        return customer_name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getEmail() {
@@ -71,5 +85,29 @@ public class Customer {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Customer() {
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "Id=" + Id +
+                ", customerName='" + customerName + '\'' +
+                ", email='" + email + '\'' +
+                ", contact='" + contact + '\'' +
+                ", address='" + address + '\'' +
+                ", dob='" + dob + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

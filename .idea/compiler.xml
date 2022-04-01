@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="digitalDen.digitalDen.main" target="1.8" />
-      <module name="digitalDen.digitalDen.test" target="1.8" />
+      <module name="digitalDen.digitalDen.main~1" target="1.8" />
+      <module name="digitalDen.digitalDen.test~1" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

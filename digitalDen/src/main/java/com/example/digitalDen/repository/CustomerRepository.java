@@ -1,5 +1,6 @@
 package com.example.digitalDen.repository;
 
+import com.example.digitalDen.api.response.User;
 import com.example.digitalDen.entities.Customer;
 import org.springframework.http.ResponseEntity;
 
@@ -12,4 +13,5 @@ public interface CustomerRepository {
     ResponseEntity<String> getCustomerLoginData(String email, String password) throws SQLException;
     ResponseEntity<String>  setCustomerData(Customer customer) throws SQLException;
     ResponseEntity<String>  updateCustomerData(Customer customer) throws SQLException;
+    User getCustomerByEmail(String email);
 }

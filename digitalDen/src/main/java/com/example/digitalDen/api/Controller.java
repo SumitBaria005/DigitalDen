@@ -1,5 +1,6 @@
 package com.example.digitalDen.api;
 
+import com.example.digitalDen.api.request.CustomerLogInRequest;
 import com.example.digitalDen.api.request.RatingReviewRequest;
 import com.example.digitalDen.api.response.RatingReviewResponse;
 import com.example.digitalDen.entities.Categories.Mobiles;
@@ -7,6 +8,7 @@ import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.entities.complaints.Complaints;
 import com.example.digitalDen.services.*;
+import io.jsonwebtoken.Jwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ import java.sql.SQLException;
 import com.example.digitalDen.entities.Category;
 import com.example.digitalDen.services.ProductService;
 
+import javax.inject.Inject;
 import java.util.List;
 
 
@@ -38,6 +41,10 @@ public class Controller {
 
     @Autowired
     private RatingReviewService ratingReviewService;
+
+    @Inject
+    private JwtService jwtService;
+
 
     //Product Related APIs
     @GetMapping("/products")
@@ -69,6 +76,11 @@ public class Controller {
     @GetMapping("/customer")
     public ResponseEntity<String> getCustomerLogin(@RequestParam String email, @RequestParam String password ) throws SQLException {
         return this.customerService.getCustomerLogin(email, password);
+    }
+
+    @PostMapping("/token")
+    public ResponseEntity<?> generateToken(@RequestBody CustomerLogInRequest customerLogInRequest) throws Exception {
+        return this.jwtService.getCustomerToken(customerLogInRequest);
     }
 
 
