@@ -1,43 +1,58 @@
 package com.example.digitalDen.entities;
 
+import javax.persistence.*;
+
+@Entity(name = "Product")
+@Table(name = "product",schema = "digitalden")
 public class Product {
-    int product_id;
-    String product_name;
-    String product_description;
-    Double price;
-    String category;
-    String company_name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public int getProduct_id() {
-        return product_id;
+    @Column(name = "product_name")
+    private String productName;
+
+    @Column(name = "product_description")
+    private String productDescription;
+
+    @Column(name = "price")
+    private double price;
+
+    @Column(name="category")
+    private String category;
+
+    @Column(name = "company_name")
+    private String companyName;
+
+    public int getId() {
+        return id;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
-
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getProduct_description() {
-        return product_description;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setProduct_description(String product_description) {
-        this.product_description = product_description;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -49,11 +64,11 @@ public class Product {
         this.category = category;
     }
 
-    public String getCompany_name() {
-        return company_name;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompany_name(String company_name) {
-        this.company_name = company_name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
