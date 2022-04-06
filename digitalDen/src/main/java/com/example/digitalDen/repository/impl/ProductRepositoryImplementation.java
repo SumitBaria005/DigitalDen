@@ -5,7 +5,6 @@ import com.example.digitalDen.db.util.JPAAccess;
 import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;

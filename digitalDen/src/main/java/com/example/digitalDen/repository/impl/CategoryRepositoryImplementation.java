@@ -4,13 +4,10 @@ import com.example.digitalDen.db.util.JDBCAccess;
 import com.example.digitalDen.db.util.JPAAccess;
 import com.example.digitalDen.entities.Category;
 import com.example.digitalDen.repository.CategoryRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;

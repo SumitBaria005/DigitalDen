@@ -1,25 +1,15 @@
 package com.example.digitalDen.repository.impl;
 
-import com.example.digitalDen.db.util.HibernateAccess;
 import com.example.digitalDen.db.util.JDBCAccess;
 import com.example.digitalDen.db.util.JPAAccess;
 import com.example.digitalDen.entities.Cart;
 import com.example.digitalDen.entities.CartToProductMapping;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.repository.CartRepository;
-import org.hibernate.Hibernate;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -64,7 +54,6 @@ public class CartRepositoryImplementation implements CartRepository {
                 CartToProductMapping cartToProductMapping=new CartToProductMapping();
                 Product product= getProduct(rs.getInt("product_id"));
                 totalPrice =totalPrice+product.getPrice()*rs.getInt("quantity");
-                //cartToProductMapping.setProduct(rs.g);
                 return null;
             }
         },cartId);
