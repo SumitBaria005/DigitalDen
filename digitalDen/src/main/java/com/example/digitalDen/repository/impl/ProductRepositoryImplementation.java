@@ -26,7 +26,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
     JPAAccess jpaAccess;
 
     final String GET_PRODUCT="SELECT * FROM product";
-    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.product where product_id=?";
+    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.product where id=?";
 
     @Override
     public List<Product> getProducts() throws SQLException {
@@ -40,6 +40,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
                 product.setPrice(rs.getDouble("price"));
                 product.setCategory(rs.getString("category"));
                 product.setCompanyName(rs.getString("company_name"));
+                product.setImageUrl(rs.getString("image_url"));
                 return product;
             }
         });
@@ -58,6 +59,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
                 product.setPrice(rs.getDouble("price"));
                 product.setCategory(rs.getString("category"));
                 product.setCompanyName(rs.getString("company_name"));
+                product.setImageUrl(rs.getString("image_url"));
                 return product;
             }
         },product_id);
