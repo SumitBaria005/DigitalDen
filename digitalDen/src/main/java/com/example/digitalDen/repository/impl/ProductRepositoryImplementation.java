@@ -5,7 +5,6 @@ import com.example.digitalDen.db.util.JPAAccess;
 import com.example.digitalDen.entities.Categories.Mobiles;
 import com.example.digitalDen.entities.Product;
 import com.example.digitalDen.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -26,8 +25,8 @@ public class ProductRepositoryImplementation implements ProductRepository {
     @Inject
     JPAAccess jpaAccess;
 
-    final String GET_PRODUCT="SELECT * FROM product";
-    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.product where product_id=?";
+    final String GET_PRODUCT="SELECT * FROM products";
+    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.products where product_id=?";
 
     @Override
     public List<Product> getProducts() throws SQLException {
@@ -35,12 +34,12 @@ public class ProductRepositoryImplementation implements ProductRepository {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Product product=new Product();
-                product.setProduct_id(rs.getInt("id"));
-                product.setProduct_name(rs.getString("product_name"));
-                product.setProduct_description(rs.getString("product_description"));
+                product.setId(rs.getInt("id"));
+                product.setProductName(rs.getString("product_name"));
+                product.setProductDescription(rs.getString("product_description"));
                 product.setPrice(rs.getDouble("price"));
                 product.setCategory(rs.getString("category"));
-                product.setCompany_name(rs.getString("company_name"));
+                product.setCompanyName(rs.getString("company_name"));
                 return product;
             }
         });
@@ -53,12 +52,12 @@ public class ProductRepositoryImplementation implements ProductRepository {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Product product=new Product();
-                product.setProduct_id(rs.getInt("id"));
-                product.setProduct_name(rs.getString("product_name"));
-                product.setProduct_description(rs.getString("product_description"));
+                product.setId(rs.getInt("id"));
+                product.setProductName(rs.getString("product_name"));
+                product.setProductDescription(rs.getString("product_description"));
                 product.setPrice(rs.getDouble("price"));
                 product.setCategory(rs.getString("category"));
-                product.setCompany_name(rs.getString("company_name"));
+                product.setCompanyName(rs.getString("company_name"));
                 return product;
             }
         },product_id);
