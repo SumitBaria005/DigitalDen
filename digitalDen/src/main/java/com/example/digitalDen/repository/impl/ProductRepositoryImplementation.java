@@ -25,8 +25,8 @@ public class ProductRepositoryImplementation implements ProductRepository {
     @Inject
     JPAAccess jpaAccess;
 
-    final String GET_PRODUCT="SELECT * FROM products";
-    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.products where product_id=?";
+    final String GET_PRODUCT="SELECT * FROM product";
+    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.product where product_id=?";
 
     @Override
     public List<Product> getProducts() throws SQLException {
