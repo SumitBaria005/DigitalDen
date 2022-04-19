@@ -13,7 +13,6 @@ public class DigitalDenApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DigitalDenApplication.class, args);
 	}
-
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -25,5 +24,4 @@ public class DigitalDenApplication {
 			}
 		};
 	}
-
 }

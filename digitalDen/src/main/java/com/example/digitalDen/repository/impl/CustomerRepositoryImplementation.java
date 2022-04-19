@@ -34,7 +34,7 @@ public class CustomerRepositoryImplementation implements CustomerRepository {
     final String CHECK_CUSTOMER_LOGIN="SELECT * FROM customer WHERE email=? and password=?";
     final String INSERT_SQL = "INSERT INTO `digitalden`.`customer` (`customer_name`, `email`, `contact`, `address`, `dob`, `password`) VALUES (?,?,?,?,?,?)";
     final String UPDATE_SQL="UPDATE `digitalden`.`customer` SET `customer_name` = ?, `email` = ?, `contact` = ?, `address` = ?, `dob` = ?, `password` = ? WHERE (`customer_id` = ?);";
-    final String FIND_CUSTOMER_USING_EMAIL = "SELECT email, password FROM customer WHERE email=?";
+    final String FIND_CUSTOMER_USING_EMAIL = "SELECT email, password FROM `digitalden`.`customer` WHERE email=?";
 
     @Override
     public List<Customer> getCustomersData() throws SQLException
@@ -44,7 +44,7 @@ public class CustomerRepositoryImplementation implements CustomerRepository {
             public Customer mapRow(ResultSet rs, int rowNum) throws SQLException
             {
                 Customer customer = new Customer();
-                customer.setId(rs.getInt("customer_id"));
+                customer.setId(rs.getInt("id"));
                 customer.setCustomerName(rs.getString("customer_name"));
                 customer.setEmail(rs.getString("email"));
                 customer.setContact(rs.getString("contact"));
