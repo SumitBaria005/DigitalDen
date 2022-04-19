@@ -78,10 +78,6 @@ public class Controller {
         return this.customerService.getCustomerLogin(email, password);
     }
 
-    @PostMapping("/token")
-    public ResponseEntity<?> generateToken(@RequestBody CustomerLogInRequest customerLogInRequest) throws Exception {
-        return this.jwtService.getCustomerToken(customerLogInRequest);
-    }
 
 
     @PostMapping("/customer")
