@@ -19,15 +19,15 @@ public class RatingReviewRepositoryImplementation implements RatingReviewReposit
     @Autowired
     JDBCAccess jdbcAccess;
 
-    private String GET_RATING_REVIEW_FOR_PRODUCT = "SELECT id, rating, review FROM bqxsukbeobzthuwdrezn.rating_review WHERE product_id = ?";
+    private String GET_RATING_REVIEW_FOR_PRODUCT = "SELECT id, rating, review FROM rating_review WHERE product_id = ?";
 
-    private String GET_RATING_REVIEW_FOR_CUSTOMER  = "SELECT id, rating, review FROM bqxsukbeobzthuwdrezn.rating_review WHERE customer_id = ?";
+    private String GET_RATING_REVIEW_FOR_CUSTOMER  = "SELECT id, rating, review FROM rating_review WHERE customer_id = ?";
 
-    private String GET_RATING_REVIEW = "SELECT * FROM  bqxsukbeobzthuwdrezn.rating_review WHERE id = ?";
+    private String GET_RATING_REVIEW = "SELECT * FROM  rating_review WHERE id = ?";
 
-    private String UPDATE_RATING_REVIEW = "UPDATE bqxsukbeobzthuwdrezn.rating_review SET rating = ?, review = ? WHERE id = ?";
+    private String UPDATE_RATING_REVIEW = "UPDATE rating_review SET rating = ?, review = ? WHERE id = ?";
 
-    private String DELETE_RATING_REVIEW = "DELETE FROM bqxsukbeobzthuwdrezn.rating_review WHERE id = ?";
+    private String DELETE_RATING_REVIEW = "DELETE FROM rating_review WHERE id = ?";
 
     @Override
     public List<RatingReviewResponse> getRatingReviewForProduct(Long productId) {

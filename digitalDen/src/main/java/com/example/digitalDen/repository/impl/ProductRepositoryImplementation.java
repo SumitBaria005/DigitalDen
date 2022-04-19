@@ -26,8 +26,8 @@ public class ProductRepositoryImplementation implements ProductRepository {
     @Inject
     JPAAccess jpaAccess;
 
-    final String GET_PRODUCT="SELECT * FROM products";
-    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.products where product_id=?";
+    final String GET_PRODUCT="SELECT * FROM product";
+    final String GET_PRODUCT_BY_ID="SELECT * FROM digitalden.product where product_id=?";
 
     @Override
     public List<Product> getProducts() throws SQLException {
@@ -35,7 +35,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Product product=new Product();
-                product.setProduct_id(rs.getInt("product_id"));
+                product.setProduct_id(rs.getInt("id"));
                 product.setProduct_name(rs.getString("product_name"));
                 product.setProduct_description(rs.getString("product_description"));
                 product.setPrice(rs.getDouble("price"));
@@ -53,7 +53,7 @@ public class ProductRepositoryImplementation implements ProductRepository {
             @Override
             public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Product product=new Product();
-                product.setProduct_id(rs.getInt("product_id"));
+                product.setProduct_id(rs.getInt("id"));
                 product.setProduct_name(rs.getString("product_name"));
                 product.setProduct_description(rs.getString("product_description"));
                 product.setPrice(rs.getDouble("price"));

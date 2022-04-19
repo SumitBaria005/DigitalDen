@@ -42,9 +42,6 @@ public class Controller {
     @Autowired
     private RatingReviewService ratingReviewService;
 
-    @Inject
-    private JwtService jwtService;
-
 
     //Product Related APIs
     @GetMapping("/products")
