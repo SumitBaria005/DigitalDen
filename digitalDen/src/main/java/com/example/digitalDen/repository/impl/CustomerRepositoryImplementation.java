@@ -1,10 +1,13 @@
 package com.example.digitalDen.repository.impl;
 
+import com.example.digitalDen.api.response.CustomerLoginResponse;
 import com.example.digitalDen.api.response.User;
 import com.example.digitalDen.db.util.JDBCAccess;
 import com.example.digitalDen.db.util.JPAAccess;
 import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.repository.CustomerRepository;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -77,16 +80,17 @@ public class CustomerRepositoryImplementation implements CustomerRepository {
     }
 
     @Override
-    public ResponseEntity<String> getCustomerLoginData(String email, String password) throws SQLException {
-        return  jdbcAccess.findOne(CHECK_CUSTOMER_LOGIN, new RowMapper<ResponseEntity<String>>() {
+    public CustomerLoginResponse getCustomerLoginData(String email, String password) throws SQLException {
+        return  jdbcAccess.findOne(CHECK_CUSTOMER_LOGIN, new RowMapper<CustomerLoginResponse>() {
             @Override
-            public ResponseEntity<String> mapRow(ResultSet rs, int rowNum) throws SQLException
+            public CustomerLoginResponse mapRow(ResultSet rs, int rowNum) throws SQLException
             {
                 if(rs.getString("email").equals(email) && rs.getString("password").equals(password))
                 {
-                    return ResponseEntity.status(HttpStatus.OK).body("Login Successfully");
+                    CustomerLoginResponse response = new CustomerLoginResponse(rs.getLong("id"), rs.getString("email"), rs.getString("password"));
+                    return response;
                 }
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Login Failed !!! Retry");
+                return null;
             }
         },email,password);
     }

@@ -1,5 +1,6 @@
 package com.example.digitalDen.services.impl;
 
+import com.example.digitalDen.api.response.CustomerLoginResponse;
 import com.example.digitalDen.api.response.MyUserPrincipal;
 
 import com.example.digitalDen.api.response.User;
@@ -7,6 +8,7 @@ import com.example.digitalDen.entities.Customer;
 import com.example.digitalDen.repository.CustomerRepository;
 import com.example.digitalDen.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -40,12 +42,19 @@ public class CustomerServiceImplementation implements CustomerService, UserDetai
     }
 
     @Override
-    public ResponseEntity<String> getCustomerLogin(String email, String password) throws SQLException {
+    public CustomerLoginResponse getCustomerLogin(String email, String password) throws SQLException {
         return customerRepository.getCustomerLoginData(email,password);
     }
 
     @Override
     public ResponseEntity<String> setCustomer(Customer customer) throws SQLException {
+        if(customer.getEmail() == null
+                || customer.getCustomerName() == null
+                || customer.getPassword() == null
+                || customer.getAddress() == null
+        ) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please Enter Required Values");
+        }
         return customerRepository.setCustomerData(customer);
     }
 

@@ -2,6 +2,7 @@ package com.example.digitalDen.api;
 
 import com.example.digitalDen.api.request.CustomerLogInRequest;
 import com.example.digitalDen.api.request.RatingReviewRequest;
+import com.example.digitalDen.api.response.CustomerLoginResponse;
 import com.example.digitalDen.api.response.RatingReviewResponse;
 import com.example.digitalDen.DTO.response.DealerData;
 import com.example.digitalDen.DTO.response.DealerShops;
@@ -80,12 +81,10 @@ public class Controller {
         return this.customerService.getCustomer(customerId);
     }
 
-    @GetMapping("/customer")
-    public ResponseEntity<String> getCustomerLogin(@RequestParam String email, @RequestParam String password ) throws SQLException {
-        return this.customerService.getCustomerLogin(email, password);
+    @PostMapping("/customer/signin")
+    public CustomerLoginResponse getCustomerLogin(@RequestBody CustomerLogInRequest customerLogInRequest ) throws SQLException {
+        return this.customerService.getCustomerLogin(customerLogInRequest.getUserName(), customerLogInRequest.getPassword());
     }
-
-
 
     @PostMapping("/customer")
     public ResponseEntity<String>  setCustomer(@RequestBody Customer customer) throws SQLException {
